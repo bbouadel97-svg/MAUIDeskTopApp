@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiDesktopApp.Views.LoginPage"
+             Title="LoginPage">
+
+             
+    <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+        <Image
+            Source="cookbook.jpeg"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="Image of a cookbook" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="Login Page"
+            FontSize="32"
+             Style="{StaticResource Headline}"
+             SemanticProperties.HeadingLevel="Level1"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+             TextColor="#333333" />
+            
+
+        <Label Text="Please enter your credentials to log in."
+             Style="{StaticResource SubHeadline}"
+             SemanticProperties.HeadingLevel="Level2"
+             SemanticProperties.Description="Please enter your credentials to log in."
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" />
+
+        <Entry 
+            Placeholder="Username" 
+            Text="{Binding Username}"
+            Keyboard="Text"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            
+        <Entry 
+            Placeholder="Password"
+            Text="{Binding Password}"
+            IsPassword="true"
+            VerticalOptions="Center" 
+            Keyboard="Text"
+            HorizontalOptions="Center" />
+        <Button
+            Text="Login"
+            VerticalOptions="Center"
+            HorizontalOptions="Fill"
+            Command="{Binding LoginCommand}" />
+
+        <Label
+            Text="{Binding LoginMessage}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

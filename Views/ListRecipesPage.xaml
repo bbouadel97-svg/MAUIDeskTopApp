@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiDesktopApp.ViewModels"
+             xmlns:models="clr-namespace:MauiDesktopApp.Models"
+             x:DataType="vm:ListRecipesViewModel"
+             x:Class="MauiDesktopApp.Views.ListRecipesPage"
+             Title="Recipes">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+        <Label Text="Recipe List"
+               FontSize="28"
+               Style="{StaticResource Headline}" />
+
+        <CollectionView ItemsSource="{Binding Recipes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Recipe">
+                    <Border 
+                        Margin="0,0,0,12"
+                        Padding="12" 
+                        Stroke="#FFC51616" 
+                        StrokeShape="RoundRectangle 5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" TextColor="#FF417638" />
+                            <Label Text="{Binding Ingredients}" FontSize="14" TextColor="#FF6247DB" />
+        <Grid RowSpacing="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Cooking Time:" FontSize="14" Grid.Column="0" />
+                                <Label Text="{Binding CookingTime}" FontSize="14" Grid.Column="1" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</ContentPage>

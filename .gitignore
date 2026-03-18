@@ -1,0 +1,36 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# IDE folders
+.vs/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Publish outputs
+publish/
+
+# Test results
+TestResults/
+
+# Rider
+.idea/
+
+# MAUI generated caches
+*.cache
