@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiDesktopApp.Views.AddRecipePage"
+             Title="AddRecipePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Ajouter une recette"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Entry 
+            Placeholder="Nom de la recette"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Text="{Binding NewRecipe.Name}" />
+        <Entry 
+            Placeholder="Ingrédients"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Text="{Binding NewRecipe.Ingredients}" />
+        <Entry
+            Placeholder="Durée de préparation"
+            VerticalOptions="Center"
+            Keyboard="Numeric"
+            HorizontalOptions="Center"
+            Text="{Binding NewRecipe.PreparationDuration}" />
+        <Button
+            Text="Ma recette est prête !"
+            Command="{Binding AddRecipeCommand}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

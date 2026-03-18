@@ -1,16 +1,27 @@
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MauiDesktopApp.Models;
+using MauiDesktopApp.Services;
 
 namespace MauiDesktopApp.ViewModels;
 
 public partial class ListRecipesViewModel : ObservableObject
 {
     public ObservableCollection<Recipe> Recipes { get; set; }
+    private readonly RecipeStore _recipeStore;
 
-    public ListRecipesViewModel()
+    public ListRecipesViewModel(RecipeStore recipeStore)
     {
+        _recipeStore = recipeStore;
+        Recipes = _recipeStore.Recipes;
+
+        if (Recipes.Count > 0)
+        {
+            return;
+        }
+
         Recipes = new ObservableCollection<Recipe>
         {
             new Recipe
@@ -34,5 +45,18 @@ public partial class ListRecipesViewModel : ObservableObject
                 ModificationDate = DateTime.Now.AddDays(-3)
             }
         };
+
+        foreach (var recipe in Recipes)
+        {
+            _recipeStore.Recipes.Add(recipe);
+        }
+
+        Recipes = _recipeStore.Recipes;
+    }
+
+    [RelayCommand]
+    private async Task AddNewRecipe()
+    {
+        await Shell.Current.GoToAsync(nameof(Views.AddRecipePage));
     }
 }
